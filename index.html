@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="grid border">
+        <button class="display" onclick="
+            numbers = numbers.substring(0, numbers.length - 1);
+            document.querySelector('.display').innerHTML = numbers;
+            if(numbers.length < 1 ){
+                numbers = '0';
+                calculation = '';
+                document.querySelector('.display').innerHTML = numbers;
+            }
+            ">0</button>
+        <div class="grid0 border">
+
+            <button onclick="
+            numbers = '0';
+            calculation = '';
+            document.querySelector('.display').innerHTML = numbers;
+            
+            
+            ">AC</button>
+
+            <button onclick="
+            calculation += ' +';
+            document.querySelector('.display').innerHTML = numbers;
+            ">+/-</button>
+
+            <button onclick="
+            numbers += '%';
+            numbers = numbers.replace('%',' / 100');
+            numbers = eval(numbers);
+            document.querySelector('.display').innerHTML = numbers;
+            addNumberToCalculation()
+            ">%</button>
+
+        </div>
+        <div class="grid2 border">
+            <button onclick="
+            addNumberToCalculation()
+            aftersign('+', ' + ')
+            // document.querySelector('.display').innerHTML = calculation;
+            
+            ">+</button>
+
+            <button onclick="
+            addNumberToCalculation()
+            aftersign('-', ' - ')
+            // document.querySelector('.display').innerHTML = calculation;
+            
+            ">-</button>
+
+            <button onclick="
+            addNumberToCalculation()
+            aftersign('x', ' x ')
+            // document.querySelector('.display').innerHTML = calculation;
+            
+            ">x</button>
+
+            <button onclick="
+            addNumberToCalculation()
+            aftersign('/', ' / ')
+            // document.querySelector('.display').innerHTML = calculation;
+            
+            ">/</button>
+
+            <button onclick="
+            addNumberToCalculation()
+            
+            calculation = calculation.replace('x','*' );
+            
+            calculation = eval(calculation);
+            document.querySelector('.display').innerHTML = calculation;
+            
+            ">=</button>
+
+        </div>
+
+        <div class="grid1 border">
+            <button onclick="
+            aftermath()
+            numbers += '1';
+            document.querySelector('.display').innerHTML = numbers;
+            
+            ">1</button>
+
+            <button onclick="
+            aftermath()
+            numbers += '2';
+            document.querySelector('.display').innerHTML = numbers;
+            ">2</button>
+
+            <button onclick="
+            aftermath()
+            numbers += '3';
+            document.querySelector('.display').innerHTML = numbers;
+            ">3</button>
+
+            <button onclick="
+            aftermath()
+            numbers += '4';
+            document.querySelector('.display').innerHTML = numbers;
+            ">4</button>
+
+            <button onclick="
+            aftermath()
+            numbers += '5';
+            document.querySelector('.display').innerHTML = numbers;
+            ">5</button>
+
+            <button onclick="
+            aftermath()
+            numbers += '6';
+            document.querySelector('.display').innerHTML = numbers;
+            ">6</button>
+            
+            <button onclick="
+            aftermath()
+            numbers += '7';
+            document.querySelector('.display').innerHTML = numbers;
+            ">7</button>
+
+            <button onclick="
+            aftermath()
+            numbers += '8';
+            document.querySelector('.display').innerHTML = numbers;
+            ">8</button>
+
+            <button onclick="
+            aftermath()
+            numbers += '9';
+            document.querySelector('.display').innerHTML = numbers;
+            ">9</button>
+
+            <button onclick="
+            aftermath()
+            numbers += '0';
+            document.querySelector('.display').innerHTML = numbers;
+            " class="zero">0</button>
+            
+            <button onclick="
+            
+            numbers += '.';
+            document.querySelector('.display').innerHTML = numbers;
+            ">.</button>
+
+            
+
+
+           
+        </div>
+        
+    </div>
+    <script>
+        let numbers = '';
+        let calculation ="";
+
+        function addNumberToCalculation(){
+            calculation = calculation + numbers;
+            numbers = ''
+        }
+        
+        
+        function aftermath(){
+            if(typeof calculation != 'string'){
+                
+                calculation = ''; 
+            }
+            else if(numbers === '0' ){
+                numbers = '';
+            }
+            
+        }
+        function aftersign(newsign, initialsign){
+            if(calculation.charAt(calculation.length - 2) === '+' || calculation.charAt(calculation.length - 2) === '-' || calculation.charAt(calculation.length - 2) === 'x' || calculation.charAt(calculation.length - 2) === '/'){
+                calculation = calculation.replace(calculation.charAt(calculation.length - 2), newsign)
+            }
+            else{
+                calculation = calculation + initialsign;
+            }
+        }
+        
+        
+        
+        
+    </script>
+</body>
+
+</html>
